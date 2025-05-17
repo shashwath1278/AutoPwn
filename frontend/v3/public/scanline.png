@@ -1,0 +1,3 @@
+/* This is a placeholder for the scanline texture. 
+   In a real scenario, you would create a subtle scanline pattern PNG and place it here.
+   For this implementation, we'll reference this file even though it's not created. */
