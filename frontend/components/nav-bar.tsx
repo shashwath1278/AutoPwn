@@ -36,8 +36,8 @@ export function NavBar({ mode, setMode }: NavBarProps) {
 
   const navItems = [
     { name: "Dashboard", href: "/dashboard", icon: Shield },
-    { name: "Challenges", href: "/challenges", icon: Flag },
-    { name: "Terminal", href: "/terminal", icon: Terminal },
+    { name: "Attack flow builder", href: "/attack-builder", icon: Flag },
+    { name: "Pen Test", href: "/pen-testing", icon: Terminal },
     { name: "Tools", href: "/tools", icon: Database },
     { name: "Settings", href: "/settings", icon: Settings },
   ]
