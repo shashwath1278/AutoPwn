@@ -1,0 +1,236 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 5, 5, 5;
+  --background-end-rgb: 10, 10, 10;
+
+  /* Matrix-inspired color palette */
+  --matrix-black: 5, 5, 5;
+  --matrix-green: 0, 255, 65;
+  --matrix-cyan: 0, 255, 255;
+  --matrix-red: 255, 51, 51;
+  --matrix-orange: 255, 153, 0;
+  --matrix-light-green: 51, 255, 153;
+  --matrix-white: 255, 255, 255;
+}
+
+@layer base {
+  :root {
+    --background: var(--matrix-black);
+    --foreground: var(--matrix-light-green);
+    
+    --card: 10, 10, 10;
+    --card-foreground: var(--matrix-light-green);
+    
+    --popover: 15, 15, 15;
+    --popover-foreground: var(--matrix-light-green);
+    
+    --primary: var(--matrix-green);
+    --primary-foreground: 0, 0, 0;
+    
+    --secondary: 20, 20, 20;
+    --secondary-foreground: var(--matrix-light-green);
+    
+    --muted: 25, 25, 25;
+    --muted-foreground: 150, 150, 150;
+    
+    --accent: var(--matrix-cyan);
+    --accent-foreground: 0, 0, 0;
+    
+    --destructive: var(--matrix-red);
+    --destructive-foreground: var(--matrix-white);
+    
+    --border: 30, 30, 30;
+    --input: 25, 25, 25;
+    --ring: var(--matrix-green);
+
+    --success: 0, 200, 83;
+    --warning: var(--matrix-orange);
+    --info: var(--matrix-cyan);
+    
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+  
+  /* Matrix-style glowing text */
+  .glow-text {
+    text-shadow: 0 0 5px rgba(0, 255, 65, 0.7), 0 0 10px rgba(0, 255, 65, 0.5);
+  }
+  
+  .glow-text-cyan {
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.7), 0 0 10px rgba(0, 255, 255, 0.5);
+  }
+  
+  /* Matrix-style grid background */
+  .matrix-grid {
+    background-image: 
+      linear-gradient(rgba(0, 255, 65, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 65, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  
+  /* Node styles */
+  .node {
+    @apply bg-card border border-border rounded-md shadow-lg transition-all;
+  }
+  
+  .node-initial {
+    @apply border-emerald-500 border-opacity-70;
+  }
+  
+  .node-reconnaissance {
+    @apply border-blue-500 border-opacity-70;
+  }
+  
+  .node-exploitation {
+    @apply border-orange-500 border-opacity-70;
+  }
+  
+  .node-privilege {
+    @apply border-red-500 border-opacity-70;
+  }
+  
+  .node-lateral {
+    @apply border-purple-500 border-opacity-70;
+  }
+  
+  .node-c2 {
+    @apply border-pink-500 border-opacity-70;
+  }
+  
+  .node-exfiltration {
+    @apply border-yellow-500 border-opacity-70;
+  }
+  
+  .node-persistence {
+    @apply border-indigo-500 border-opacity-70;
+  }
+  
+  .node-selected {
+    @apply ring-2 ring-accent ring-opacity-70;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+  }
+  
+  .node-active {
+    @apply ring-2 ring-primary ring-opacity-70;
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+  }
+}
+
+@layer utilities {
+  .ring-success {
+    @apply ring-2 ring-[rgb(var(--success))] ring-opacity-70;
+    box-shadow: 0 0 10px rgba(0, 200, 83, 0.3);
+  }
+
+  .ring-failure {
+    @apply ring-2 ring-destructive ring-opacity-70;
+    box-shadow: 0 0 10px rgba(255, 51, 51, 0.3);
+  }
+}
+  
+/* Connection styles */
+.react-flow__edge-path {
+  stroke: rgba(0, 255, 65, 0.7);
+  stroke-width: 2;
+  filter: drop-shadow(0 0 8px rgba(0, 255, 65, 0.3));
+}
+
+.react-flow__edge.selected .react-flow__edge-path {
+  stroke: rgba(0, 255, 255, 0.7);
+  stroke-width: 3;
+  filter: drop-shadow(0 0 12px rgba(0, 255, 255, 0.4));
+}
+
+.react-flow__handle {
+  width: 8px !important;
+  height: 8px !important;
+  background: rgb(var(--card)) !important;
+  border: 2px solid rgba(0, 255, 65, 0.7) !important;
+  transition: all 0.2s ease;
+}
+
+.react-flow__handle:hover {
+  background: rgba(0, 255, 65, 0.7) !important;
+  transform: scale(1.2);
+}
+
+.react-flow__handle.connecting {
+  background: rgba(0, 255, 255, 0.7) !important;
+  border-color: rgba(0, 255, 255, 0.7) !important;
+}
+
+/* Connection line while dragging */
+.react-flow__connection-path {
+  stroke: rgba(0, 255, 255, 0.7);
+  stroke-width: 2;
+  stroke-dasharray: 5,5;
+  filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.3));
+}
+
+.connection-success {
+  stroke: rgb(0, 200, 83);
+  stroke-width: 2px;
+}
+
+.connection-potential {
+  stroke: rgb(0, 255, 255);
+  stroke-width: 2px;
+  stroke-dasharray: 5, 5;
+}
+
+.connection-failure {
+  stroke: rgb(255, 51, 51);
+  stroke-width: 2px;
+  stroke-dasharray: 2, 2;
+}
+
+/* Terminal effect */
+.terminal {
+  @apply bg-black border border-primary p-3 font-mono text-primary rounded-md;
+  box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+}
+
+.typing-effect::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  from, to { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Minimap */
+.minimap {
+  @apply bg-black/80 border border-border rounded-md overflow-hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Toolbar */
+.toolbar {
+  @apply bg-card border-b border-border shadow-md;
+}

@@ -1,0 +1,46 @@
+.matrix-grid {
+  background-color: #0a0a0a;
+  background-image: 
+    linear-gradient(rgba(0, 255, 65, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 65, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center center;
+}
+
+.matrix-grid::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(0, 255, 65, 0.05) 1px, transparent 0);
+  background-size: 20px 20px;
+  pointer-events: none;
+}
+
+/* Add a subtle glow effect to the grid */
+.matrix-grid::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 255, 65, 0.03) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* Enhance the grid lines when zooming */
+.matrix-grid .react-flow__background {
+  transition: all 0.3s ease;
+}
+
+.matrix-grid .react-flow__background:hover {
+  filter: brightness(1.2);
+} 
